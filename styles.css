@@ -47,4 +47,15 @@ h1 {
 #docs {
   color: #000;
   text-decoration: none;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+#powered {
+  color: #000;
+  text-decoration: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }
