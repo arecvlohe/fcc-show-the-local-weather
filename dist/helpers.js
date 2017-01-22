@@ -33,12 +33,38 @@ function setListenter(type, func) {
 }
 
 /**
+* Create a curried function that updates text for the temp element
+* @param {element} - The temp element
+*/
+function setTextContentTemp(element) {
+  return function(type) {
+    return function(state) {
+      if (type === 'F' ) {
+        element.textContent = state.fahrenheit.toFixed(1)
+      } else {
+        element.textContent = state.celsius.toFixed(1)
+      }
+    }
+  }
+}
+
+/**
 * Create a curried function that updates text for a given element
-* @param {text} - The element whose text you want to change
+* @param {element} - The element whose text you want to change
 */
 function setTextContent(element) {
   return function(text) {
     element.textContent = text
+  }
+}
+
+/**
+* Create a curried function that updates the class for a given element
+* @param {element} - The element whose class you want to change
+*/
+function setClassName(element) {
+  return function(classname) {
+    element.className = classname
   }
 }
 
@@ -62,4 +88,15 @@ function appendElements(parent) {
       parent.appendChild(element)
     })
   }
+}
+
+/**
+* Create a function that updates the global state object
+* @param {Object} oldState
+* @param {newState} newState
+* @param {function} callback
+*/
+function setGlobalState(oldState, newState, callback) {
+  STATE = Object.assign({}, oldState, newState)
+  callback(STATE)
 }

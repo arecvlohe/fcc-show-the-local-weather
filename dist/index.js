@@ -1,3 +1,4 @@
+// ELEMENTS
 /**
 * Create the div for where the temp will be displayed
 */
@@ -10,7 +11,7 @@ var temp = makeTempDiv(createElement('div'))
 * Create a button that when the user clicks displays the temperature in fahrenheit
 */
 var makeFButton = R.compose(
-  setListenter('click', function() { console.log('click') }),
+  setListenter('click', function() { setTempText2F(STATE) }),
   setText('F'),
   setId('fahrenheit')
 )
@@ -20,17 +21,24 @@ var fButton = makeFButton(createElement('div'))
 * Create a button that when the user clicks displays the temperature in celsius
 */
 var makeCButton = R.compose(
-  setListenter('click', function() { console.log('click') }),
+  setListenter('click', function() { setTempText2C(STATE) }),
   setText('C'),
   setId('celsius')
 )
 var cButton = makeCButton(createElement('div'))
 
+// FUNCTIONS
 /**
 * Create a function that resets the temp value
 */
-var setTemp = setTextContent(temp)
+var setTempText = setTextContentTemp(temp)
+var setTempText2F = setTempText('F')
+var setTempText2C = setTempText('C')
 
+var setAppText = setTextContent(app)
+var setAppClass = setClassName(app)
+
+// AJAX
 /**
 * Handle the geolocation if it returns the users position
 * @param {Object} position - The coordinates of the user passed back from navigator
@@ -45,10 +53,9 @@ function onSuccess(position) {
     jsonp: 'callback',
     dataType: 'jsonp',
     success: function(response) {
-      console.log(response)
+      var temperature = response.currently.temperature
       var renderUnderApp = appendElements(app)
-
-      setTemp(response.currently.temperature)
+      setGlobalState(STATE, { fahrenheit: temperature, celsius: (temperature - 32) * (5/9) }, setTempText2F)
       renderUnderApp([temp, fButton, cButton])
     }
   })
@@ -59,9 +66,25 @@ function onSuccess(position) {
 * @param {Object} - The error object passed back from navigator
 */
 function onError(error) {
-  console.error(error)
+  setAppClass('error')
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+     setAppText('User denied the request for Geolocation.')
+     break;
+    case error.POSITION_UNAVAILABLE:
+      setAppText('Location information is unavailable.')
+      break;
+    case error.TIMEOUT:
+      setAppText('The request to get user location timed out.')
+      break;
+    case error.UNKNOWN_ERROR:
+      setAppText('An unknown error occurred.')
+      break;
+   }
 }
 
+
+// PROGRAM
 /**
 * Run the program
 */
