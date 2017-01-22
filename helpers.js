@@ -40,9 +40,9 @@ function setTextContentTemp(element) {
   return function(type) {
     return function(state) {
       if (type === 'F' ) {
-        element.textContent = state.fahrenheit.toFixed(1)
+        element.textContent = state.fahrenheit.toFixed(1) + '°F'
       } else {
-        element.textContent = state.celsius.toFixed(1)
+        element.textContent = state.celsius.toFixed(1) + '°C'
       }
     }
   }
@@ -62,9 +62,10 @@ function setTextContent(element) {
 * Create a curried function that updates the class for a given element
 * @param {element} - The element whose class you want to change
 */
-function setClassName(element) {
-  return function(classname) {
+function setClassName(classname) {
+  return function(element) {
     element.className = classname
+    return element
   }
 }
 
