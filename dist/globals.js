@@ -2,12 +2,14 @@
 var global = {}
 
 /**
+* The global api url
 * @memberof global
 * @type {string}
 */
 var API = 'https://api.darksky.net/forecast/464271a84e193070f9a5d159c9574296/'
 global.API = API
 /**
+* The global document object
 * @memberof global
 * @type {Object}
 */
@@ -21,6 +23,7 @@ global.D = D
 var NAV = window.navigator
 global.NAV = NAV
 /**
+* The global language taken from the browser
 * @memberof global
 * @type {Object}
 */
@@ -34,7 +37,7 @@ var app = D.querySelector('#app')
 global.app = app
 
 /**
-* Create a function that updates the global state object
+* A function that updates the global state object
 * @memberof global
 * @param {Object} oldState
 * @param {newState} newState
@@ -47,7 +50,7 @@ function setGlobalState(oldState, newState, callback) {
 global.setGlobalState = setGlobalState
 
 /**
-* The global state
+* The global state object
 * @namespace
 */
 var STATE = {}

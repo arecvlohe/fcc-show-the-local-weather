@@ -1,7 +1,7 @@
 /** @namespace */
 var app = {}
 /**
-* Create the div for where the temp will be displayed
+* A function that takes an element and creates the temp div
 */
 var makeTempDiv = R.compose(
   helpers.setId('temp')
@@ -9,7 +9,8 @@ var makeTempDiv = R.compose(
 var temp = makeTempDiv(createElement('div'))
 
 /**
-* Create a button that when the user clicks displays the temperature in fahrenheit
+* A function that takes an element and creates a F button
+* @memberof app
 */
 var makeFButton = R.compose(
   helpers.setListenter('click', function() { app.setTempText2F(STATE) }),
@@ -17,10 +18,12 @@ var makeFButton = R.compose(
   helpers.setClassName('button'),
   helpers.setId('fahrenheit')
 )
-var fButton = makeFButton(createElement('div'))
+app.makeFButton = makeFButton
+var fButton = app.makeFButton(createElement('div'))
 
 /**
-* Create a button that when the user clicks displays the temperature in celsius
+* A function that takes an elements and creates a C button
+* @memberof app
 */
 var makeCButton = R.compose(
   helpers.setListenter('click', function() { app.setTempText2C(STATE) }),
@@ -28,32 +31,41 @@ var makeCButton = R.compose(
   helpers.setClassName('button'),
   helpers.setId('celsius')
 )
+app.makeCButton = makeCButton
 var cButton = makeCButton(createElement('div'))
 
+/**
+* A function that takes an element and will box the F and C buttons
+* @memberof app
+*/
 var makeButtonBox = R.compose(
   setId('button-box')
 )
-var buttonBox = makeButtonBox(createElement('div'))
+app.makeButtonBox = makeButtonBox
+var buttonBox = app.makeButtonBox(createElement('div'))
 
 /**
-* Create a function that resets the temp value
+* A function that resets the temp value
 * @memberof app
 */
 var setTempText = helpers.setTextContentTemp(temp)
 app.setTempText = setTempText
 
 /**
+* A function that takes state and renders the temp text as degrees F
 * @memberof app
 */
 var setTempText2F = app.setTempText('F')
 app.setTempText2F = setTempText2F
 /**
+* A function that takes state and renders the temp text as degrees C
 * @memberof app
 */
 var setTempText2C = app.setTempText('C')
 app.setTempText2C = setTempText2C
 
 /**
+* A function that takes text and sets it on the app element
 * @memberof app
 */
 var setAppText = helpers.setTextContent(global.app)
@@ -61,7 +73,7 @@ app.setAppText = setAppText
 var setAppErrorClass = helpers.setClassName('error')
 
 /**
-* Handle the geolocation if it returns the users position
+* A function that handles geolocation success
 * @memberof app
 * @param {Object} position - The coordinates of the user passed back from navigator
 */
@@ -88,7 +100,7 @@ function onSuccess(position) {
 app.onSuccess = onSuccess
 
 /**
-* Handle geolocation if for some reason it fails
+* A function that handles geolocation errors
 * @memberof app
 * @param {Object} - The error object passed back from navigator
 */
@@ -112,7 +124,7 @@ function onError(error) {
 app.onError = onError
 
 /**
-* Run the program
+* A function that runs the program
 * @memberof app
 */
 function main() {
