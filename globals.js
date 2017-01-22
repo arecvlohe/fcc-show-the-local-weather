@@ -17,6 +17,7 @@ var D = window.document
 global.D = D
 
 /**
+* The global navigator object
 * @memberof global
 * @type {Object}
 */
@@ -30,6 +31,7 @@ global.NAV = NAV
 var LANGUAGE = NAV.userLanguage || NAV.language;
 global.LANGUAGE = LANGUAGE
 /**
+* The global app div
 * @memberof global
 * @type {Object}
 */
