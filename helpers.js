@@ -1,7 +1,7 @@
 /** @namespace */
 var helpers = {}
 /**
-* Set the id on an HTML element
+* A function that takes an element and sets the id on an HTML element
 * @memberof helpers
 * @param {string} id
 */
@@ -14,7 +14,7 @@ function setId(id) {
 helpers.setId = setId
 
 /**
-* Set the text on an HTML element
+* A function that takes an element and sets the text on an HTML element
 * @memberof helpers
 * @param {string} text
 */
@@ -27,7 +27,7 @@ function setText(text) {
 helpers.setText = setText
 
 /**
-* Set the eventListener on an HTML element
+* A function that takes an element and sets the eventListener on that element
 * @memberof helpers
 * @param {string} type
 * @param {function} func
@@ -41,7 +41,7 @@ function setListenter(type, func) {
 helpers.setListenter = setListenter
 
 /**
-* Create a curried function that updates text for the temp element
+* A function that takes the temp element and updates its text
 * @memberof helpers
 * @param {element} - The temp element
 */
@@ -59,7 +59,7 @@ function setTextContentTemp(element) {
 helpers.setTextContentTemp = setTextContentTemp
 
 /**
-* Create a curried function that updates text for a given element
+* A function that takes an element and updates its text
 * @memberof helpers
 * @param {element} - The element whose text you want to change
 */
@@ -71,7 +71,7 @@ function setTextContent(element) {
 helpers.setTextContent = setTextContent
 
 /**
-* Create a curried function that updates the class for a given element
+* A curried function that takes an element updates its class
 * @memberof helpers
 * @param {element} - The element whose class you want to change
 */
@@ -84,7 +84,7 @@ function setClassName(classname) {
 helpers.setClassName = setClassName
 
 /**
-* Create an element with a type and return it
+* A function that takes an html type and returns that element
 * @memberof helpers
 * @param {string} type - HTML element type (i.e. 'div')
 */
@@ -96,7 +96,7 @@ helpers.createElement = createElement
 
 
 /**
-* Create a curried function that appends elements to the DOM based on the parent element
+* A function that takes a parent and appends child elements to it
 * @memberof helpers
 * @param {parent} - The parent HTML element to append children to
 */
