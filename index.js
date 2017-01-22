@@ -2,6 +2,7 @@
 var app = {}
 /**
 * A function that takes an element and creates the temp div
+* @memberof app
 */
 var makeTempDiv = R.compose(
   helpers.setId('temp')
