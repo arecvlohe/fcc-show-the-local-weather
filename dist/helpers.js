@@ -1,5 +1,8 @@
+/** @namespace */
+var helpers = {}
 /**
 * Set the id on an HTML element
+* @memberof helpers
 * @param {string} id
 */
 function setId(id) {
@@ -8,9 +11,11 @@ function setId(id) {
     return element
   }
 }
+helpers.setId = setId
 
 /**
 * Set the text on an HTML element
+* @memberof helpers
 * @param {string} text
 */
 function setText(text) {
@@ -19,9 +24,11 @@ function setText(text) {
     return element
   }
 }
+helpers.setText = setText
 
 /**
 * Set the eventListener on an HTML element
+* @memberof helpers
 * @param {string} type
 * @param {function} func
 */
@@ -31,9 +38,11 @@ function setListenter(type, func) {
     return element
   }
 }
+helpers.setListenter = setListenter
 
 /**
 * Create a curried function that updates text for the temp element
+* @memberof helpers
 * @param {element} - The temp element
 */
 function setTextContentTemp(element) {
@@ -47,9 +56,11 @@ function setTextContentTemp(element) {
     }
   }
 }
+helpers.setTextContentTemp = setTextContentTemp
 
 /**
 * Create a curried function that updates text for a given element
+* @memberof helpers
 * @param {element} - The element whose text you want to change
 */
 function setTextContent(element) {
@@ -57,9 +68,11 @@ function setTextContent(element) {
     element.textContent = text
   }
 }
+helpers.setTextContent = setTextContent
 
 /**
 * Create a curried function that updates the class for a given element
+* @memberof helpers
 * @param {element} - The element whose class you want to change
 */
 function setClassName(classname) {
@@ -68,19 +81,23 @@ function setClassName(classname) {
     return element
   }
 }
+helpers.setClassName = setClassName
 
 /**
 * Create an element with a type and return it
+* @memberof helpers
 * @param {string} type - HTML element type (i.e. 'div')
 */
 function createElement(type) {
-  var element = D.createElement(type)
+  var element = global.D.createElement(type)
   return element
 }
+helpers.createElement = createElement
 
 
 /**
 * Create a curried function that appends elements to the DOM based on the parent element
+* @memberof helpers
 * @param {parent} - The parent HTML element to append children to
 */
 function appendElements(parent) {
@@ -90,14 +107,4 @@ function appendElements(parent) {
     })
   }
 }
-
-/**
-* Create a function that updates the global state object
-* @param {Object} oldState
-* @param {newState} newState
-* @param {function} callback
-*/
-function setGlobalState(oldState, newState, callback) {
-  STATE = Object.assign({}, oldState, newState)
-  callback(STATE)
-}
+helpers.appendElements = appendElements
