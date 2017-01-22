@@ -12,3 +12,9 @@ var LANGUAGE = NAV.userLanguage || NAV.language;
 
 /** @type {Object} */
 var app = D.querySelector('#app')
+
+/**
+* The global state
+* @namespace
+*/
+var STATE = {}
