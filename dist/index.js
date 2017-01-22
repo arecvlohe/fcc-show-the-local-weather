@@ -94,7 +94,7 @@ var setAppErrorClass = helpers.setClassName('error')
 function onSuccess(position) {
   var lat = position.coords.latitude
   var lon = position.coords.longitude
-  var url = API + lat + ',' + lon + '?exclude=minutely,hourly,daily,alerts,flags&lang=' + LANGUAGE + '&units=auto'
+  var url = global.API + lat + ',' + lon + '?exclude=minutely,hourly,daily,alerts,flags&lang=' + global.LANGUAGE + '&units=auto'
 
   $.ajax({
     url: url,

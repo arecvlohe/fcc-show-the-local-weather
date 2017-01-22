@@ -26,7 +26,7 @@ global.NAV = NAV
 /**
 * The global language taken from the browser
 * @memberof global
-* @type {Object}
+* @type {String}
 */
 var LANGUAGE = NAV.userLanguage || NAV.language;
 global.LANGUAGE = LANGUAGE
