@@ -6,7 +6,8 @@ var app = {}
 var makeTempDiv = R.compose(
   helpers.setId('temp')
 )
-var temp = makeTempDiv(createElement('div'))
+app.makeTempDiv = makeTempDiv
+var temp = app.makeTempDiv(createElement('div'))
 
 /**
 * A function that takes an element and creates a F button
