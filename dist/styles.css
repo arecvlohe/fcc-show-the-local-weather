@@ -1,3 +1,45 @@
 body {
-  background-color: pink;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 500;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#button-box {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button {
+  padding: 10px 50px;
+  border: 2px solid #ccc;
+  border-radius: 2rem;
+  margin: 10px 20px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.button:hover {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+  transition: all 0.3s ease 0s;
+}
+
+#temp {
+  font-weight: 300;
+  font-size: 40px;
 }
