@@ -11,18 +11,6 @@ app.makeTempDiv = makeTempDiv
 var temp = app.makeTempDiv(createElement('div'))
 
 /**
-* A function that takes an element and creates text to display docs
-* @memberof app
-*/
-var makeDocsText = R.compose(
-  helpers.setHref('./docs/index.html'),
-  helpers.setText('Read the Docs!'),
-  helpers.setId('docs')
-)
-app.makeDocsText = makeDocsText
-var docText = makeDocsText(createElement('a'))
-
-/**
 * A function that takes an element and creates a F button
 * @memberof app
 */
@@ -106,7 +94,7 @@ function onSuccess(position) {
       var buttons = appendElements(buttonBox)
       setGlobalState(STATE, { fahrenheit: temperature, celsius: (temperature - 32) * (5/9) }, app.setTempText2F)
       buttons([fButton, cButton])
-      contents([temp, buttonBox, docText])
+      contents([temp, buttonBox])
 
     }
   })
