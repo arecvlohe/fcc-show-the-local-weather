@@ -88,7 +88,6 @@ function onSuccess(position) {
     jsonp: 'callback',
     dataType: 'jsonp',
     success: function(response) {
-      console.debug(response)
       var temperature = response.currently.temperature
       var icon = response.currently.icon
       var summary = response.currently.summary
