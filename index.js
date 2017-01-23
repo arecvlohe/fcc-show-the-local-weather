@@ -83,7 +83,6 @@ function onSuccess(position) {
   var lat = position.coords.latitude
   var lon = position.coords.longitude
   var url = global.API + lat + ',' + lon + '?exclude=minutely,hourly,daily,alerts,flags&lang=' + global.LANGUAGE + '&units=auto'
-
   $.ajax({
     url: url,
     jsonp: 'callback',
@@ -96,6 +95,8 @@ function onSuccess(position) {
 
       var contents = helpers.appendElements(global.app)
       var buttons = helpers.appendElements(buttonBox)
+      var gears = document.getElementsByTagName('img')[0]
+      global.app.removeChild(gears)
 
       var makeIcon = R.compose(helpers.setClassName('wi ' + global.icons[icon]))
       var weatherIcon = makeIcon(createElement('i'))
@@ -143,6 +144,11 @@ app.onError = onError
 * @memberof app
 */
 function main() {
+
+  var gears = createElement('img')
+  gears.src = './gears.svg'
+  global.app.appendChild(gears)
+
   if (global.NAV.geolocation) {
     global.NAV.geolocation.getCurrentPosition(app.onSuccess, app.onError)
   }
