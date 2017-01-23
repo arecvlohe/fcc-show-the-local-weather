@@ -89,13 +89,26 @@ function onSuccess(position) {
     jsonp: 'callback',
     dataType: 'jsonp',
     success: function(response) {
+      console.debug(response)
       var temperature = response.currently.temperature
-      var contents = appendElements(global.app)
-      var buttons = appendElements(buttonBox)
+      var icon = response.currently.icon
+      var summary = response.currently.summary
+
+      var contents = helpers.appendElements(global.app)
+      var buttons = helpers.appendElements(buttonBox)
+
+      var makeIcon = R.compose(helpers.setClassName('wi ' + global.icons[icon]))
+      var weatherIcon = makeIcon(createElement('i'))
+
+      var makeSummary = R.compose(
+        helpers.setText(summary),
+        helpers.setId('summary')
+      )
+      var summary = makeSummary(createElement('div'))
+
       setGlobalState(STATE, { fahrenheit: temperature, celsius: (temperature - 32) * (5/9) }, app.setTempText2F)
       buttons([fButton, cButton])
-      contents([temp, buttonBox])
-
+      contents([weatherIcon, summary, temp, buttonBox])
     }
   })
 }
